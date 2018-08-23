@@ -165,7 +165,11 @@ public:
     }
     if (dimension < 1)
       throw std::runtime_error("Invalid dimension number");
-    if (tile.size() != (size_t)dimension && tile.size() != 0)
+    if (tile.size() == 0) {
+      for (int _ = 0; _ < dimension; _++)
+        tile_.push_back(0);
+    }
+    if (tile.size() != (size_t)dimension)
       throw std::runtime_error("invalid tile value");
     scale_factor_ = 2 * pow(dimension, -.5);
   }
